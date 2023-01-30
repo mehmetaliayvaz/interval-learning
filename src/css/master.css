@@ -3,3 +3,7 @@
 * {
   @apply font-poppins;
 }
+
+.page-wrapper {
+  @apply py-20;
+}
