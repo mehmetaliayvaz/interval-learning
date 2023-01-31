@@ -15,22 +15,23 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useDataStore } from "../store/data";
 
+const dataStore = useDataStore();
+const dataLength = computed(() => dataStore.getData.length);
 const emits = defineEmits(["addData"]);
 
 const newData = ref({
   title: "",
   content: "",
-  degree: 5,
 });
 
 const addData = () => {
-  emits("addData", newData.value);
+  emits("addData", { ...newData.value, degree: 5, id: dataLength.value + 1 });
   newData.value = {
     title: "",
     content: "",
-    degree: 5,
   };
 };
 </script>
