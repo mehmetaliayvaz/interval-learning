@@ -22,6 +22,7 @@ const emits = defineEmits(["addData"]);
 const newData = ref({
   title: "",
   content: "",
+  degree: 5,
 });
 
 const addData = () => {
@@ -29,7 +30,6 @@ const addData = () => {
   newData.value = {
     title: "",
     content: "",
-    degree: 5,
   };
 };
 </script>
