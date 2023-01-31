@@ -3,8 +3,8 @@
     <div class="card-body">
       <h2 class="card-title">{{ item.title }}</h2>
       <p>{{ item.content }}</p>
-      <p>{{ item.degree }}</p>
-      <div class="card-actions">
+      <p class="my-5">Derece: {{ item.degree }}</p>
+      <div v-if="showActions" class="card-actions">
         <button class="btn btn-success btn-sm">Learned</button>
         <button class="btn btn-error btn-sm">Repeat</button>
       </div>
@@ -17,6 +17,10 @@ defineProps({
   item: {
     type: Object,
     required: true,
+  },
+  showActions: {
+    type: Boolean,
+    default: false,
   },
 });
 </script>
