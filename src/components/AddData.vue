@@ -30,6 +30,7 @@ const addData = () => {
   newData.value = {
     title: "",
     content: "",
+    degree: 5,
   };
 };
 </script>
