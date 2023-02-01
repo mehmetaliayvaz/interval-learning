@@ -26,17 +26,28 @@ const dataStore = useDataStore();
 
 const data = computed(() => dataStore.getData);
 const showItem = ref({});
+const tempArray = ref([]);
+const randomItem = ref();
 const loading = ref(false);
 
 const showContent = () => {
-  const tempArray = [];
   data.value.forEach((item) => {
     for (let i = 0; i < item.degree; i++) {
-      tempArray.push(item);
+      tempArray.value.push(item);
     }
   });
-  const randomItem = Math.floor(Math.random() * tempArray.length);
-  showItem.value = tempArray[randomItem];
+
+  //shuffle array
+  for (let i = tempArray.value.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [tempArray.value[i], tempArray.value[j]] = [
+      tempArray.value[j],
+      tempArray.value[i],
+    ];
+  }
+
+  randomItem.value = Math.floor(Math.random() * tempArray.value.length);
+  showItem.value = tempArray.value[randomItem.value];
 };
 showContent();
 
