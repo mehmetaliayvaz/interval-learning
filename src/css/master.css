@@ -7,3 +7,11 @@
 .page-wrapper {
   @apply py-20;
 }
+
+.page-content p {
+  @apply text-lg text-gray-700 mb-5;
+}
+
+.page-content img {
+  @apply w-full mb-5;
+}
