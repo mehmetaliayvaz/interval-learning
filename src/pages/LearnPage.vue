@@ -10,6 +10,7 @@
           :show-actions="true"
           @action="updateDataDegree($event)"
           class="w-1/3"
+          :class="loading ? 'opacity-70 pointer-events-none' : ''"
         />
       </div>
     </div>
@@ -25,6 +26,7 @@ const dataStore = useDataStore();
 
 const data = computed(() => dataStore.getData);
 const showItem = ref({});
+const loading = ref(false);
 
 const showContent = () => {
   const tempArray = [];
@@ -40,7 +42,11 @@ showContent();
 
 const updateDataDegree = (event) => {
   dataStore.updateDataDegree(event.id, event.action);
-  showContent();
+  loading.value = true;
+  setTimeout(() => {
+    loading.value = false;
+    showContent();
+  }, 400);
 };
 </script>
 
