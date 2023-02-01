@@ -1,7 +1,7 @@
 <template>
   <div class="page-wrapper">
     <div class="container">
-      <div class="flex flex-col items-center">
+      <div v-if="data.length" class="flex flex-col items-center">
         <button class="btn btn-primary mb-5" @click="showContent()">
           Yeni Bilgi Getir
         </button>
@@ -12,6 +12,12 @@
           class="w-1/3"
           :class="loading ? 'opacity-70 pointer-events-none' : ''"
         />
+      </div>
+      <div v-else class="flex flex-col items-center">
+        <h1 class="text-2xl font-bold mb-5">Henüz bilgi eklenmemiş</h1>
+        <router-link :to="{ name: 'home' }" class="btn btn-primary"
+          >Bilgi Ekle</router-link
+        >
       </div>
     </div>
   </div>
