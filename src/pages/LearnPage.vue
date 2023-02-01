@@ -5,7 +5,12 @@
         <button class="btn btn-primary mb-5" @click="showContent()">
           Yeni Bilgi Getir
         </button>
-        <base-card :item="showItem" :show-actions="true" class="w-1/3" />
+        <base-card
+          :item="showItem"
+          :show-actions="true"
+          @action="updateDataDegree($event)"
+          class="w-1/3"
+        />
       </div>
     </div>
   </div>
@@ -32,6 +37,11 @@ const showContent = () => {
   showItem.value = tempArray[randomItem];
 };
 showContent();
+
+const updateDataDegree = (event) => {
+  dataStore.updateDataDegree(event.id, event.action);
+  showContent();
+};
 </script>
 
 <style></style>

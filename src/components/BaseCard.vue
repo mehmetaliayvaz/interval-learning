@@ -5,15 +5,25 @@
       <p>{{ item.content }}</p>
       <p class="my-5">Derece: {{ item.degree }}</p>
       <div v-if="showActions" class="card-actions">
-        <button class="btn btn-success btn-sm">Learned</button>
-        <button class="btn btn-error btn-sm">Repeat</button>
+        <button class="btn btn-success btn-sm" @click="itemAction(-1)">
+          Learned
+        </button>
+        <button class="btn btn-error btn-sm" @click="itemAction(1)">
+          Repeat
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-defineProps({
+const emits = defineEmits(["action"]);
+
+const itemAction = (action) => {
+  emits("action", { action: action, id: props.item.id });
+};
+
+const props = defineProps({
   item: {
     type: Object,
     required: true,

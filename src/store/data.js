@@ -2,23 +2,39 @@ import { defineStore } from "pinia";
 
 export const useDataStore = defineStore({
   id: "data",
+
   state: () => ({
     data: [],
   }),
+
   actions: {
     setLocalStoreData() {
       localStorage.setItem("data", JSON.stringify(this.data));
     },
+
     getLocalStoreData() {
       if (localStorage.getItem("data")) {
         this.data = JSON.parse(localStorage.getItem("data"));
       }
     },
+
     setPushData(data) {
       this.data.push(data);
       this.setLocalStoreData();
     },
+
+    updateDataDegree(id, degree) {
+      const item = this.data.find((item) => item.id === id);
+      if (
+        (degree === 1 && item.degree < 10) ||
+        (degree === -1 && item.degree > 1)
+      ) {
+        item.degree = item.degree + degree;
+      }
+      this.setLocalStoreData();
+    },
   },
+
   getters: {
     getData() {
       return this.data;
