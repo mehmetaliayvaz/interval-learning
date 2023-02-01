@@ -33,6 +33,12 @@ export const useDataStore = defineStore({
       }
       this.setLocalStoreData();
     },
+
+    deleteData(id) {
+      const index = this.data.findIndex((item) => item.id === id);
+      this.data.splice(index, 1);
+      this.setLocalStoreData();
+    },
   },
 
   getters: {

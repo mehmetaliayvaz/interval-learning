@@ -6,7 +6,12 @@
           <AddData @add-data="dataStore.setPushData($event)" />
         </base-modal>
 
-        <base-card v-for="(item, index) in data" :key="index" :item="item" />
+        <base-card
+          v-for="(item, index) in data"
+          :key="index"
+          :item="item"
+          @delete="deleteDataItem($event)"
+        />
       </div>
     </div>
   </div>
@@ -21,6 +26,10 @@ import AddData from "../components/AddData.vue";
 
 const dataStore = useDataStore();
 const data = computed(() => dataStore.getData);
+
+const deleteDataItem = (id) => {
+  dataStore.deleteData(id);
+};
 </script>
 
 <style></style>
