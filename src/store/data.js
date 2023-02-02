@@ -18,6 +18,11 @@ export const useDataStore = defineStore({
       }
     },
 
+    setExampleData(data) {
+      this.data = data;
+      this.setLocalStoreData();
+    },
+
     setPushData(data) {
       this.data.push(data);
       this.setLocalStoreData();

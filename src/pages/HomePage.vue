@@ -1,9 +1,14 @@
 <template>
   <div class="page-wrapper">
     <div class="container">
-      <h2 v-if="!data.length" class="text-2xl font-bold text-center mb-5">
-        Henüz bilgi eklenmemiş...
-      </h2>
+      <div v-if="!data.length" class="flex flex-col items-center mb-5">
+        <h2 class="text-2xl font-bold text-center mb-5">
+          Henüz bilgi eklenmemiş...
+        </h2>
+        <button class="btn" @click="setExampleData()">
+          ÖRNEK VERİLER GETİR
+        </button>
+      </div>
       <div class="mb-10 flex justify-center">
         <base-modal id="addNewData-modal" btn-text="YENİ BİLGİ EKLE">
           <AddData @add-data="dataStore.setPushData($event)" />
@@ -23,6 +28,7 @@
 
 <script setup>
 import { ref, computed } from "vue";
+import { exampleData } from "../helpers/exampleData";
 import { useDataStore } from "../store/data";
 import BaseCard from "../components/BaseCard.vue";
 import BaseModal from "../components/BaseModal.vue";
@@ -33,6 +39,10 @@ const data = computed(() => dataStore.getData);
 
 const deleteDataItem = (id) => {
   dataStore.deleteData(id);
+};
+
+const setExampleData = () => {
+  dataStore.setExampleData(exampleData.slice());
 };
 </script>
 
