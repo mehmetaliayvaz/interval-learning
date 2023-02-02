@@ -1,11 +1,15 @@
 <template>
   <div class="page-wrapper">
     <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <base-modal id="addNewData-modal" btn-text="Yeni Bilgi Ekle">
+      <h2 v-if="!data.length" class="text-2xl font-bold text-center mb-5">
+        Henüz bilgi eklenmemiş...
+      </h2>
+      <div class="mb-10 flex justify-center">
+        <base-modal id="addNewData-modal" btn-text="YENİ BİLGİ EKLE">
           <AddData @add-data="dataStore.setPushData($event)" />
         </base-modal>
-
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <base-card
           v-for="(item, index) in data"
           :key="index"

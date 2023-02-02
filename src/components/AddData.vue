@@ -13,7 +13,7 @@
     placeholder="İçerik"
     :class="{ 'textarea-error': isError && newData.content === '' }"
   ></textarea>
-  <button class="btn btn-primary" @click="addData()">Ekle</button>
+  <button class="btn btn-primary" @click="addData()">Kaydet</button>
 </template>
 
 <script setup>

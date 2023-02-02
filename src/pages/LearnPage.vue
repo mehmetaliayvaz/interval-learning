@@ -2,19 +2,19 @@
   <div class="page-wrapper">
     <div class="container">
       <div v-if="data.length" class="flex flex-col items-center">
-        <button class="btn btn-primary mb-5" @click="showContent()">
-          Yeni Bilgi Getir
+        <button class="btn btn-primary mb-10" @click="showContent()">
+          YENİ BİLGİ GETİR
         </button>
         <base-card
           :item="showItem"
           :show-actions="true"
           @action="updateDataDegree($event)"
-          class="w-1/3"
+          class="md:w-1/3"
           :class="loading ? 'opacity-70 pointer-events-none' : ''"
         />
       </div>
       <div v-else class="flex flex-col items-center">
-        <h1 class="text-2xl font-bold mb-5">Henüz bilgi eklenmemiş</h1>
+        <h2 class="text-2xl font-bold mb-5">Henüz bilgi eklenmemiş...</h2>
         <router-link :to="{ name: 'home' }" class="btn btn-primary"
           >Bilgi Ekle</router-link
         >

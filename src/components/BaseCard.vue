@@ -7,14 +7,13 @@
           <x-circle-icon class="w-6 h-6 text-gray-700" />
         </button>
       </div>
-      <p>{{ item.content }}</p>
-      <p class="my-5">Derece: {{ item.degree }}</p>
-      <div v-if="showActions" class="card-actions">
+      <p class="mb-10">{{ item.content }}</p>
+      <div v-if="showActions" class="card-actions justify-center my-4">
         <button class="btn btn-success btn-sm" @click="itemAction(-1)">
-          Learned
+          Daha Az Gör
         </button>
         <button class="btn btn-error btn-sm" @click="itemAction(1)">
-          Repeat
+          Daha Sık Gör
         </button>
       </div>
     </div>

@@ -4,13 +4,13 @@
       <div class="flex-1">
         <router-link
           :to="{ name: 'home' }"
-          class="btn btn-ghost normal-case text-xl"
+          class="btn btn-ghost normal-case md:text-xl"
           >Aralıklı Öğrenme</router-link
         >
       </div>
       <div class="flex-none">
-        <ul class="menu menu-horizontal px-1">
-          <li>
+        <ul class="menu menu-horizontal md:space-x-3 px-1">
+          <li class="hidden md:block">
             <router-link :to="{ name: 'home' }"> Anasayfa </router-link>
           </li>
           <li>
